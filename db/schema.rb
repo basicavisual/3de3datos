@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626205345) do
+ActiveRecord::Schema.define(version: 20170626213853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,37 @@ ActiveRecord::Schema.define(version: 20170626205345) do
     t.string "profesionales_nombrePrestacionServicios"
     t.string "profesionales_nombreFilantropicas"
     t.integer "id_interests"
+  end
+
+  create_table "patrimonials", force: :cascade do |t|
+    t.integer "idServidorPublico"
+    t.integer "idDependencia"
+    t.datetime "fechaTransmision"
+    t.integer "idDeclaracionPatrimonio"
+    t.datetime "fechaPresentacion"
+    t.string "nombre"
+    t.string "puestoEncargo"
+    t.string "nivelMaximoEstudios"
+    t.integer "experienciaPrivado"
+    t.integer "experienciaPublico"
+    t.integer "ingresoTotalAnual"
+    t.integer "otrosIngresos"
+    t.string "tipoBien"
+    t.string "formaAdquisicion"
+    t.string "fechaAdquisicion"
+    t.string "valor"
+    t.string "tipoDeclaracion"
+    t.string "tipoGravamen"
+    t.string "institucionCuenta"
+    t.datetime "fechaGravamen"
+    t.string "cantidadRepresentadaGravamenes"
+    t.string "tipoInversion"
+    t.string "cantidadRepresentada"
+    t.string "tipoBienVehiculo"
+    t.string "puestoSimplificado"
+    t.string "genero"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
