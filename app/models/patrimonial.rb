@@ -1,0 +1,2 @@
+class Patrimonial < ApplicationRecord
+end

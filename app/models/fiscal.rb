@@ -1,0 +1,2 @@
+class Fiscal < ApplicationRecord
+end

@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626193713) do
+ActiveRecord::Schema.define(version: 20170626205345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fiscals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "idDeclaracionInformacionFiscal"
+    t.integer "idServidorPublico"
+    t.integer "idApdf"
+    t.datetime "fechaTransmision"
+    t.string "nombre"
+    t.string "puestoEncargo"
+    t.string "ingresos"
+    t.string "impuesto"
+    t.datetime "fechaPresentacion"
+    t.string "totalSueldo"
+    t.string "impuestoRetenido"
+  end
 
   create_table "interests", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -33,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170626193713) do
     t.string "profesionales_nombreColegiosAsociaciones"
     t.string "profesionales_nombrePrestacionServicios"
     t.string "profesionales_nombreFilantropicas"
+    t.integer "id_interests"
   end
 
 end
