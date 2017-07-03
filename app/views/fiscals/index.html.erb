@@ -1,0 +1,41 @@
+<%= flash[:notice] %>
+<h1>Declaraciones fiscales</h1>
+<br>
+<p>Por motivos de testing, aquí las últimas 5 declaraciones fiscales</p>
+<hr>
+<br>
+<table>
+  <tbody>
+    <% @fiscals.each do |fiscal| %>
+    <tr>
+      <td><%= fiscal.idDeclaracionInformacionFiscal %></td>
+      <td><%= fiscal.idServidorPublico %></td>
+      <td><%= fiscal.idApdf %></td>
+      <td><%= fiscal.fechaTransmision %></td>
+      <td><%= fiscal.nombre %></td>
+      <td><%= fiscal.aPaterno %></td>
+      <td><%= fiscal.aMaterno %></td>
+      <td><%= fiscal.genero %></td>
+      <td><%= fiscal.puestoEncargo %></td>
+      <td><%= fiscal.ingresos %></td>
+      <td><%= fiscal.impuesto %></td>
+      <td><%= fiscal.fechaPresentacion %></td>
+      <td><%= fiscal.totalSueldo %></td>
+      <td><%= fiscal.impuestoRetenido %></td>
+      <td><%= fiscal.puestoSimplificado %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+
+
+<h4>Importa</h4>
+<%= form_tag import_fiscals_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+  <% end %>
+
+
+  </div>
