@@ -1,0 +1,44 @@
+<%= flash[:notice] %>
+<h1>Declaraciones de interés</h1>
+<br>
+<%= link_to "Home", welcome_index_url %>
+<p>Por motivos de testing, aquí las últimas 5 declaraciones de interés</p>
+<hr>
+<br>
+<table>
+  <tbody>
+    <% @interests.each do |interest| %>
+    <tr>
+      <td><%= interest.idDeclaracionIntereses %></td>
+      <td><%= interest.idServidorPublico %></td>
+      <td><%= interest.idApdf %></td>
+      <td><%= interest.fechaActualizacion %></td>
+      <td><%= interest.nombre %></td>
+      <td><%= interest.aPaterno %></td>
+      <td><%= interest.aMaterno %></td>
+      <td><%= interest.genero %></td>
+      <td><%= interest.puestoEncargo %></td>
+      <td><%= interest.puestoSimplificado %></td>
+      <td><%= interest.numeroRelacionesFamiliares %></td>
+      <td><%= interest.numeroRelacionesPersonales %></td>
+      <td><%= interest.negocios_sociedad_mercantil %></td>
+      <td><%= interest.negocios_actividad_comercial %></td>
+      <td><%= interest.profesionales_nombreCamaraConfederaciones %></td>
+      <td><%= interest.profesionales_nombreColegiosAsociaciones %></td>
+      <td><%= interest.profesionales_nombrePrestacionServicios %></td>
+      <td><%= interest.profesionales_nombreFilantropicas %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+
+  <h4>Importa</h4>
+  <%= form_tag import_interests_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV" %>
+    <% end %>
+
+
+    </div>

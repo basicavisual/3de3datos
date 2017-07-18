@@ -1,5 +1,6 @@
 <%= flash[:notice] %>
 <h1>Declaraciones fiscales</h1>
+<%= link_to "Home", welcome_index_url %>
 <br>
 <p>Por motivos de testing, aquí las últimas 5 declaraciones fiscales</p>
 <hr>
@@ -36,6 +37,5 @@
   <%= file_field_tag :file %>
   <%= submit_tag "Import CSV" %>
   <% end %>
-
 
   </div>

@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'welcome/index'
+  get 'interests/index'
+  get 'interests/import'
+  get 'fiscals/index'
+  get 'fiscals/import'
+
   resources :fiscals do
     collection { post :import }
   end
 
-  get 'fiscals/index'
+  resources :interests do
+    collection { post :import }
+  end
 
-  get 'fiscals/import'
-   root to: "fiscals#index"
+   root to: "welcome#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -5,6 +5,6 @@ class FiscalsController < ApplicationController
 
   def import
     Fiscal.import(params[:file])
-    redirect_to root_url, notice: "Datos importados"
+    redirect_to root_url, notice: "Datos importados exitosamente"
   end
 end
