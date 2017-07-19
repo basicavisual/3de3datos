@@ -1,0 +1,55 @@
+<%= flash[:notice] %>
+<h1>Declaraciones Patrimoniales</h1>
+<br>
+<%= link_to "Home", welcome_index_url %>
+<p>Por motivos de testing, aquí las últimas 5 declaraciones patrimoniales</p>
+<hr>
+<br>
+
+<table>
+  <tbody>
+    <% @patrimonials.each do |patrimonial| %>
+    <tr>
+      <td><%= patrimonial.id_patrimonial %></td>
+      <td><%= patrimonial.idDeclaracionPatrimonio %></td>
+      <td><%= patrimonial.idServidorPublico %></td>
+      <td><%= patrimonial.idDependencia %></td>
+      <td><%= patrimonial.fechaTransmision %></td>
+      <td><%= patrimonial.nombre %></td>
+      <td><%= patrimonial.aPaterno %></td>
+      <td><%= patrimonial.aMaterno %></td>
+      <td><%= patrimonial.genero %></td>
+      <td><%= patrimonial.puestoEncargo %></td>
+      <td><%= patrimonial.puestoSimplificado %></td>
+      <td><%= patrimonial.nivelMaximoEstudios %></td>
+      <td><%= patrimonial.experienciaPrivado %></td>
+      <td><%= patrimonial.experienciaPublico %></td>
+      <td><%= patrimonial.ingresoTotalAnual %></td>
+      <td><%= patrimonial.otrosIngresos %></td>
+      <td><%= patrimonial.tipoBien %></td>
+      <td><%= patrimonial.formaAdquisicion %></td>
+      <td><%= patrimonial.fechaAdquisicion %></td>
+      <td><%= patrimonial.valor %></td>
+      <td><%= patrimonial.tipoDeclaracion %></td>
+      <td><%= patrimonial.tipoGravamen %></td>
+      <td><%= patrimonial.institucionCuenta %></td>
+      <td><%= patrimonial.fechaGravamen %></td>
+      <td><%= patrimonial.cantidadRepresentadaGravamenes %></td>
+      <td><%= patrimonial.tipoInversion %></td>
+      <td><%= patrimonial.cantidadRepresentada %></td>
+      <td><%= patrimonial.tipoBienVehiculo %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+
+  <h4>Importa</h4>
+  <%= form_tag import_patrimonials_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV" %>
+    <% end %>
+
+
+    </div>

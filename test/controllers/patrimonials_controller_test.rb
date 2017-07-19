@@ -1,13 +1,13 @@
 require 'test_helper'
 
-class InterestsControllerTest < ActionDispatch::IntegrationTest
+class PatrimonialsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get interests_index_url
+    get patrimonials_index_url
     assert_response :success
   end
 
   test "should get import" do
-    get interests_import_url
+    get patrimonials_import_url
     assert_response :success
   end
 

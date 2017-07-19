@@ -5,12 +5,18 @@ Rails.application.routes.draw do
   get 'interests/import'
   get 'fiscals/index'
   get 'fiscals/import'
+  get 'patrimonials/index'
+  get 'patrimonials/import'
 
   resources :fiscals do
     collection { post :import }
   end
 
   resources :interests do
+    collection { post :import }
+  end
+
+  resources :patrimonials do
     collection { post :import }
   end
 
