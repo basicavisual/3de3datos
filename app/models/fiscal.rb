@@ -6,4 +6,12 @@ class Fiscal < ApplicationRecord
       Fiscal.create! row.to_hash
     end
   end
+
+  def self.search(search)
+    if search.present?
+      where(["nombre LIKE ?", "%#{search}%"])
+    else
+      last(5)
+    end
+  end
 end

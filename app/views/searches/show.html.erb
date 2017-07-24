@@ -1,0 +1,19 @@
+<h1>Search results</h1>
+
+<p><%= link_to 'Back', new_search_path %></p>
+
+<% if @search.search_fiscals.empty? %>
+
+    <p>No records found</p>
+
+<% else %>
+    <% @search.search_fiscals.each do |c| %>
+    <br>
+    <div class="div">
+      <h1><%= c.nombre %></h1>
+      <p>Año <%= c.year %></p>
+      <p>Puesto <%= c.puesto_simplificado %></p>
+      <p>Género <%= c.genero %></p>
+    </div>
+    <% end %>
+<% end %>

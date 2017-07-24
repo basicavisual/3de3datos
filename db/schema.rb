@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719002250) do
+ActiveRecord::Schema.define(version: 20170724203554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,10 +29,11 @@ ActiveRecord::Schema.define(version: 20170719002250) do
     t.datetime "fechaPresentacion"
     t.string "totalSueldo"
     t.string "impuestoRetenido"
-    t.string "puestoSimplificado"
+    t.string "puesto_simplificado"
     t.string "genero"
     t.string "aPaterno"
     t.string "aMaterno"
+    t.integer "year"
   end
 
   create_table "interests", force: :cascade do |t|
@@ -93,6 +94,16 @@ ActiveRecord::Schema.define(version: 20170719002250) do
     t.string "aPaterno"
     t.string "aMaterno"
     t.integer "id_patrimonial"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string "name"
+    t.string "puestoEncargo"
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "nombre"
+    t.string "puesto_simplificado"
   end
 
 end

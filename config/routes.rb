@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get 'fiscals/import'
   get 'patrimonials/index'
   get 'patrimonials/import'
+  get 'searches/new'
+  get 'searches/create'
+  get 'searches/show'
+
 
   resources :fiscals do
     collection { post :import }
@@ -19,6 +23,8 @@ Rails.application.routes.draw do
   resources :patrimonials do
     collection { post :import }
   end
+
+  resources :searches
 
    root to: "welcome#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

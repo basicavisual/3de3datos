@@ -1,0 +1,24 @@
+<h3>búsqueda avanzada</h3>
+
+<%= form_for @search, html: {class: "pure-form"} do |s| %>
+
+  <div class="field">
+    <%= s.label :nombre %>
+    <%= s.text_field :nombre %>
+
+  </div>
+
+  <div class="field">
+    <%= s.label :year %>
+    <%= s.select :year, options_for_select(@year), :include_blank => true %>
+  </div>
+
+  <div class="field">
+    <%= s.label :puesto_simplificado %>
+    <%= s.select :puesto_simplificado, options_for_select(@puesto_simplificado), :include_blank => true %>
+  </div>
+
+  <div class="actions"><%= s.submit "Search", class: "pure-button pure-button-primary" %></div>
+  <% end %>
+
+  <p><%= link_to 'Back', fiscals_path %></p>
