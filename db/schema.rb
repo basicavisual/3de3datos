@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731200239) do
+ActiveRecord::Schema.define(version: 20170731211024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170731200239) do
     t.string "a_paterno"
     t.string "a_materno"
     t.integer "year"
+    t.index ["id_servidor_publico"], name: "index_fiscals_on_id_servidor_publico"
   end
 
   create_table "interests", force: :cascade do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20170731200239) do
     t.string "a_paterno"
     t.string "a_materno"
     t.integer "numeroRelacionesPersonales"
+    t.index ["id_servidor_publico"], name: "index_interests_on_id_servidor_publico"
   end
 
   create_table "patrimonials", force: :cascade do |t|
@@ -94,6 +96,7 @@ ActiveRecord::Schema.define(version: 20170731200239) do
     t.string "a_paterno"
     t.string "a_materno"
     t.integer "id_patrimonial"
+    t.index ["id_servidor_publico"], name: "index_patrimonials_on_id_servidor_publico"
   end
 
   create_table "people", force: :cascade do |t|
@@ -106,6 +109,7 @@ ActiveRecord::Schema.define(version: 20170731200239) do
     t.string "puesto_simplificado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["id_servidor_publico"], name: "index_people_on_id_servidor_publico"
   end
 
   create_table "searches", force: :cascade do |t|
