@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  puestoSimplificado: MyString
+  puesto_simplificado: MyString
   year: 1
 
 two:
   name: MyString
-  puestoSimplificado: MyString
+  puesto_simplificado: MyString
   year: 1

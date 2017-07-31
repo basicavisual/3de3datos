@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731194314) do
+ActiveRecord::Schema.define(version: 20170731200239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170731194314) do
     t.integer "idApdf"
     t.datetime "fechaTransmision"
     t.string "nombre"
-    t.string "puestoEncargo"
+    t.string "puesto_encargo"
     t.string "ingresos"
     t.string "impuesto"
     t.datetime "fechaPresentacion"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20170731194314) do
     t.string "impuestoRetenido"
     t.string "puesto_simplificado"
     t.string "genero"
-    t.string "aPaterno"
-    t.string "aMaterno"
+    t.string "a_paterno"
+    t.string "a_materno"
     t.integer "year"
   end
 
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170731194314) do
     t.datetime "fechaActualizacion"
     t.integer "idDeclaracionIntereses"
     t.string "nombre"
-    t.string "puestoEncargo"
+    t.string "puesto_encargo"
     t.integer "numeroRelacionesFamiliares"
     t.datetime "fechaPresentacion"
     t.string "laborales_nombreDistintoEmpleo"
@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 20170731194314) do
     t.string "profesionales_nombrePrestacionServicios"
     t.string "profesionales_nombreFilantropicas"
     t.integer "id_interests"
-    t.string "puestoSimplificado"
+    t.string "puesto_simplificado"
     t.string "genero"
-    t.string "aPaterno"
-    t.string "aMaterno"
+    t.string "a_paterno"
+    t.string "a_materno"
     t.integer "numeroRelacionesPersonales"
   end
 
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20170731194314) do
     t.integer "idDeclaracionPatrimonio"
     t.datetime "fechaPresentacion"
     t.string "nombre"
-    t.string "puestoEncargo"
+    t.string "puesto_encargo"
     t.string "nivelMaximoEstudios"
     t.integer "experienciaPrivado"
     t.integer "experienciaPublico"
@@ -87,30 +87,30 @@ ActiveRecord::Schema.define(version: 20170731194314) do
     t.string "tipoInversion"
     t.string "cantidadRepresentada"
     t.string "tipoBienVehiculo"
-    t.string "puestoSimplificado"
+    t.string "puesto_simplificado"
     t.string "genero"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "aPaterno"
-    t.string "aMaterno"
+    t.string "a_paterno"
+    t.string "a_materno"
     t.integer "id_patrimonial"
   end
 
   create_table "people", force: :cascade do |t|
     t.integer "id_servidor_publico"
     t.string "nombre"
-    t.string "aPaterno"
-    t.string "aMaterno"
+    t.string "a_paterno"
+    t.string "a_materno"
     t.string "genero"
-    t.string "puestoEncargo"
-    t.string "puestoSimplificado"
+    t.string "puesto_encargo"
+    t.string "puesto_simplificado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "searches", force: :cascade do |t|
     t.string "name"
-    t.string "puestoEncargo"
+    t.string "puesto_encargo"
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
