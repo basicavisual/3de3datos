@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170730221536) do
+ActiveRecord::Schema.define(version: 20170731194314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170730221536) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "idDeclaracionInformacionFiscal"
-    t.integer "idServidorPublico"
+    t.integer "id_servidor_publico"
     t.integer "idApdf"
     t.datetime "fechaTransmision"
     t.string "nombre"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20170730221536) do
   create_table "interests", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "idServidorPublico"
+    t.integer "id_servidor_publico"
     t.integer "idApdf"
     t.datetime "fechaActualizacion"
     t.integer "idDeclaracionIntereses"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20170730221536) do
   end
 
   create_table "patrimonials", force: :cascade do |t|
-    t.integer "idServidorPublico"
+    t.integer "id_servidor_publico"
     t.integer "idDependencia"
     t.datetime "fechaTransmision"
     t.integer "idDeclaracionPatrimonio"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20170730221536) do
   end
 
   create_table "people", force: :cascade do |t|
-    t.integer "idServidorPublico"
+    t.integer "id_servidor_publico"
     t.string "nombre"
     t.string "aPaterno"
     t.string "aMaterno"
