@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idServidorPublico: 1
+  nombre: MyString
+  aPaterno: MyString
+  aMaterno: MyString
+  genero: MyString
+  puestoEncargo: MyString
+  puestoSimplificado: MyString
+
+two:
+  idServidorPublico: 1
+  nombre: MyString
+  aPaterno: MyString
+  aMaterno: MyString
+  genero: MyString
+  puestoEncargo: MyString
+  puestoSimplificado: MyString
