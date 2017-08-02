@@ -2,18 +2,22 @@
 
 <p><%= link_to 'Back', new_search_path %></p>
 
-<% if @search.search_fiscals.empty? %>
+<% if @search.search_people.empty? %>
 
     <p>No records found</p>
 
 <% else %>
-    <% @search.search_fiscals.each do |c| %>
+    <% @search.search_people.each do |c| %>
     <br>
     <div class="div">
-      <h1><%= c.nombre %></h1>
-      <p>Año <%= c.year %></p>
-      <p>Puesto <%= c.puesto_simplificado %></p>
+      <%= link_to 'Ver declaraciones', person_path(c.servidor) %>
+      <h1><%= c.nombre %> <%= c.a_paterno %> <%= c.a_materno %></h1>
+
+      <p>Puesto simplificado <%= c.puesto_simplificado %></p>
+      <p>Puesto completo <%= c.puesto_encargo %></p>
       <p>Género <%= c.genero %></p>
+      <p>id serv <%= c.servidor %></p>
+      <p>id <%= c.id %></p>
     </div>
     <% end %>
 <% end %>

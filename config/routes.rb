@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'searches/create'
   get 'searches/show'
 
-
   resources :fiscals do
     collection { post :import }
   end
@@ -24,9 +23,12 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
-  resources :searches
-  resources :people
+  resources :searches do
+    :people
+  end
 
+  resources :people, param: :servidor
+  
    root to: "welcome#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

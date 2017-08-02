@@ -1,4 +1,6 @@
 class Search < ApplicationRecord
+
+
   def search_fiscals
     fiscals = Fiscal.all
 

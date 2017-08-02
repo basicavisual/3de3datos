@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731211024) do
+ActiveRecord::Schema.define(version: 20170802044634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170731211024) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "idDeclaracionInformacionFiscal"
-    t.integer "id_servidor_publico"
+    t.integer "servidor"
     t.integer "idApdf"
     t.datetime "fechaTransmision"
     t.string "nombre"
@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 20170731211024) do
     t.string "a_paterno"
     t.string "a_materno"
     t.integer "year"
-    t.index ["id_servidor_publico"], name: "index_fiscals_on_id_servidor_publico"
+    t.index ["servidor"], name: "index_fiscals_on_servidor"
   end
 
   create_table "interests", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "id_servidor_publico"
+    t.integer "servidor"
     t.integer "idApdf"
     t.datetime "fechaActualizacion"
     t.integer "idDeclaracionIntereses"
@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(version: 20170731211024) do
     t.string "a_paterno"
     t.string "a_materno"
     t.integer "numeroRelacionesPersonales"
-    t.index ["id_servidor_publico"], name: "index_interests_on_id_servidor_publico"
+    t.index ["servidor"], name: "index_interests_on_servidor"
   end
 
   create_table "patrimonials", force: :cascade do |t|
-    t.integer "id_servidor_publico"
+    t.integer "servidor"
     t.integer "idDependencia"
     t.datetime "fechaTransmision"
     t.integer "idDeclaracionPatrimonio"
@@ -96,11 +96,11 @@ ActiveRecord::Schema.define(version: 20170731211024) do
     t.string "a_paterno"
     t.string "a_materno"
     t.integer "id_patrimonial"
-    t.index ["id_servidor_publico"], name: "index_patrimonials_on_id_servidor_publico"
+    t.index ["servidor"], name: "index_patrimonials_on_servidor"
   end
 
   create_table "people", force: :cascade do |t|
-    t.integer "id_servidor_publico"
+    t.integer "servidor"
     t.string "nombre"
     t.string "a_paterno"
     t.string "a_materno"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20170731211024) do
     t.string "puesto_simplificado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id_servidor_publico"], name: "index_people_on_id_servidor_publico"
+    t.index ["servidor"], name: "index_people_on_servidor"
   end
 
   create_table "searches", force: :cascade do |t|

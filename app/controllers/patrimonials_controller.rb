@@ -1,4 +1,6 @@
 class PatrimonialsController < ApplicationController
+
+
   def index
     @patrimonials = Patrimonial.last(5)
   end

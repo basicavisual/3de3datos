@@ -1,4 +1,7 @@
 class Patrimonial < ApplicationRecord
+
+  belongs_to :person, foreign_key: 'servidor'
+
   require 'csv'
 
   def self.import(file)
