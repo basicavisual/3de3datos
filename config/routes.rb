@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
   get 'welcome/index'
-  get 'interests/index'
-  get 'interests/import'
-  get 'fiscals/index'
-  get 'fiscals/import'
-  get 'patrimonials/index'
-  get 'patrimonials/import'
-  get 'searches/new'
-  get 'searches/create'
-  get 'searches/show'
+  # get 'interests/index'
+  # get 'interests/import'
+  # get 'fiscals/index'
+  # get 'fiscals/import'
+  # get 'patrimonials/index'
+  # get 'patrimonials/import'
+  # get 'searches/new'
+  # get 'searches/create'
+  # get 'searches/show'
 
   resources :fiscals do
     collection { post :import }
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   resources :people, param: :servidor
-  
+
    root to: "welcome#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
