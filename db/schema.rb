@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802044634) do
+ActiveRecord::Schema.define(version: 20170831161553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170802044634) do
   create_table "fiscals", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "idDeclaracionInformacionFiscal"
+    t.integer "id_declaracion_fiscal"
     t.integer "servidor"
     t.integer "idApdf"
     t.datetime "fechaTransmision"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170802044634) do
     t.integer "servidor"
     t.integer "idApdf"
     t.datetime "fechaActualizacion"
-    t.integer "idDeclaracionIntereses"
+    t.integer "id_declaracion_interes"
     t.string "nombre"
     t.string "puesto_encargo"
     t.integer "numeroRelacionesFamiliares"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20170802044634) do
     t.integer "servidor"
     t.integer "idDependencia"
     t.datetime "fechaTransmision"
-    t.integer "idDeclaracionPatrimonio"
+    t.integer "id_declaracion_patrimonio"
     t.datetime "fechaPresentacion"
     t.string "nombre"
     t.string "puesto_encargo"
