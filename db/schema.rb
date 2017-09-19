@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831161553) do
+ActiveRecord::Schema.define(version: 20170908070916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20170831161553) do
     t.string "a_paterno"
     t.string "a_materno"
     t.integer "numeroRelacionesPersonales"
+    t.integer "year"
     t.index ["servidor"], name: "index_interests_on_servidor"
   end
 
@@ -96,6 +97,7 @@ ActiveRecord::Schema.define(version: 20170831161553) do
     t.string "a_paterno"
     t.string "a_materno"
     t.integer "id_patrimonial"
+    t.integer "year"
     t.index ["servidor"], name: "index_patrimonials_on_servidor"
   end
 

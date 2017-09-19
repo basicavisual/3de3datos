@@ -1,0 +1,171 @@
+/*General*/
+
+* {
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  clear: both;
+}
+
+.all {
+  width: 65%;
+  display: block;
+  margin: 2em auto 2em auto;
+
+}
+
+.logo img {
+  display: inline;
+  height: 12em;
+  width: auto;
+  vertical-align: bottom;
+  margin: 1em;
+}
+
+.form {
+  display: inline;
+}
+
+input {
+  padding:.55em 1em .55em 1em;;
+  margin: 1em 0 1em 0;
+  font-size: 1.1em;
+  font-family: monospace;
+  background-color: #fff;
+  border: 1px solid #b7b7b7;
+  vertical-align: middle;
+}
+
+.button-gray {
+  font-size: 1.1em;
+  padding: .55em 1em .55em 1em;
+  vertical-align: middle;
+  font-family: monospace;
+  border: 1px solid #b7b7b7;
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+  transition: .5s;
+  cursor: pointer;
+}
+
+
+.button-gray:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+
+.separator {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+
+.nav-link {
+  text-align: center;
+  padding: 1em 1em;
+  text-decoration: none;
+  color: #222;
+  font-family: monospace;
+  font-size: 1.1em;
+  padding: 1em;
+  margin-top: .7em;
+  vertical-align: middle;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+td {
+  width: 50%;
+}
+
+td p {
+  margin-top: .2rem;
+  margin-bottom: .2rem;
+}
+
+.bolder {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.thinner {
+  font-size: 1.3rem;
+}
+
+.thinner, .bolder {
+  margin: 0;
+}
+
+.mapa {
+  width: 80%;
+  height: auto;
+  margin: auto;
+  display: block;
+}
+
+.graph {
+  width: 90%;
+  height: auto;
+  margin: auto;
+  display: block;
+}
+
+/*#contorno {
+  display: none;
+}*/
+
+.footer {
+  background-color: #000;
+  height: 13em;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.logos-footer {
+  display: inline-block;
+  float: right;
+  margin: 2em 25em 2em 1em;
+  height: 3em;
+  width: auto;
+
+
+/*Responsive*/
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+    border: 0px;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}

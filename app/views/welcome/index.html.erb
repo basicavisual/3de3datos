@@ -1,5 +1,48 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
 
-<%= link_to "Fiscales", { :controller => :fiscals, :action => :index } %> <br>
-<%= link_to "De Interés", { :controller => :interests, :action => :index } %>
+        <h2>Datos disponibles</h2>
+        <h3>Selecciona los datos que quieres consultar</h3>
+        <p>Revisa cuánta información de las declaraciones de intereses, patrimoniales y fiscales de cada funcionario hace pública el gobierno de cada entidad u organismo en comparación con los formatos de declaración pública de #3de3.</p>
+        <p>Recorre el mapa con el cursor para conocer a detalle la información de cada entidad u organismo.</p>
+        <%= image_tag("mapa.png", :class => "mapa")%>
+        <%= image_tag("graph-all.png", :class => "graph")%>
+        <div id="contorno">
+          <hr>
+          <div class="row">
+            <div class="col-4">
+              <h2>Estadísticas</h2>
+              <h3>Valores y sueldos</h3>
+            </div>
+            <div class="col-8">
+              <p>
+              Para estos cargos los sueldos van entre 100,000 y 500,000. Las medias se muestran en magenta y la mediana representa la línea amarilla. El lado de la izquierda de la gráfica representa el ingreso obtenido por los empleados de género masculino, mientras que el lado derecho representa el ingreso obtenido por las empleadas de género femenino.
+              </p>
+            </div>
+          <%= image_tag("genero.png", :class => "graph")%>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-4">
+            <h3>Declaración de bienes inmuebles</h3>
+          </div>
+          <div class="col-8">
+            <p>
+            Asymmetrical tofu raw denim vaporware taxidermy succulents. Coloring book excepteur drinking vinegar glossier, polaroid pop-up migas pork belly kombucha. Jianbing mixtape banh mi glossier, whatever irony blog vape chicharrones adaptogen salvia you probably haven't heard of them enim. Copper mug magna prism flexitarian vaporware palo santo you probably haven't heard of them hell of in ramps cred schlitz YOLO consectetur.
+            </p>
+          </div>
+        </div>
+        <%= image_tag("inmuebles.png", :class => "graph")%>
+        <hr>
+        <div class="row">
+          <div class="col-4">
+            <h3>Fechas de declaración</h3>
+          </div>
+          <div class="col-8">
+            <p>
+            Asymmetrical tofu raw denim vaporware taxidermy succulents. Coloring book excepteur drinking vinegar glossier, polaroid pop-up migas pork belly kombucha. Jianbing mixtape banh mi glossier, whatever irony blog vape chicharrones adaptogen salvia you probably haven't heard of them enim.
+            </p>
+          </div>
+          <%= image_tag("fechas.png", :class => "graph")%>
+        </div>
+      </div>
+  </body>
+</html>

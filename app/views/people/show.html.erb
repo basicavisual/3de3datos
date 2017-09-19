@@ -1,69 +1,90 @@
-<h1>Show funcionarios</h1>
+<h1>Resultados</h1>
 
-<p><%= link_to 'Back', new_search_path %></p>
-
-
+<hr>
     <br>
     <div class="div">
-
-      <h1><%= @person.nombre %> <%= @person.a_paterno %> <%= @person.a_materno %></h1>
-
-      <p>Puesto simplificado <%= @person.puesto_simplificado %></p>
-      <p>Puesto completo <%= @person.puesto_encargo %></p>
-      <p>Género <%= @person.genero %></p>
-      <p>id serv <%= @person.servidor %></p>
-      <p>id <%= @person.id %></p>
-      <br>
+      <table>
+        <tr>
+          <td><p class="thinner">Nombre:</p></td>
+          <td><p class="bolder"> <%= @person.nombre %> <%= @person.a_paterno %> <%= @person.a_materno %></p></td>
+        </tr>
+        <tr>
+          <td><p class="thinner">Puesto:</p></td>
+          <td><p class="bolder"><%= @person.puesto_encargo.capitalize %></p></td>
+        </tr>
+        <tr>
+          <td><p>Entidad:</p></td>
+          <td><p>Ciudad de México</p></td>
+        </tr>
+        <tr>
+          <td><p>Nivel máximo de estudios:</p></td>
+          <td><p><%= @patrimonial.pluck(:nivelMaximoEstudios).last.capitalize  || "No hay información"  %></p></td>
+        </tr>
+        <tr>
+          <td><p>Experiencia laboral en años:</p></td>
+          <td><p>Sector Privado: <%= @patrimonial.pluck(:experienciaPrivado).last || "No hay información" %> Sector Público: <%= @patrimonial.pluck(:experienciaPublico).last || "No hay información" %></p></td>
+        </tr>
+      </table>
     </div>
-      <% if @fiscal.empty? %>
-      No hay declaraciones fiscales
-      <% end %>
-      <% @fiscal.each do |f| %>
-      <p>Ingresos: <%= f.ingresos || "No hay información" %> </p>
-      <p>Impuestos: <%= f.impuesto || "No hay información" %> </p>
-      <p>Sueldo: <%= f.totalSueldo  || "No hay información" %> </p>
-      <p>Impuesto retenido: <%= f.impuestoRetenido  || "No hay información" %> </p>
-      <p>Fecha de transmisión: <%= f.fechaTransmision  || "No hay información"  %> </p>
-      <p>Año: <%= f.year  || "No hay información"  %> </p>
-      <% end %>
 
-      <% if @interest.empty? %>
-      <p>No hay declaraciones de interés</p>
-      <% end %>
+      <% (2016..Date.today.year).each do |z| %>
+          <% fiscalthis = @fiscal.where(year: z) %>
+          <% interestthis = @interest.where(year: z) %>
+          <!-- <% patrimonialthis = @patrimonial.where(year: z) %> -->
+            <% if fiscalthis.empty? %>
+            No hay declaraciones fiscales
+            <% end %>
 
-      <% @interest.each do |i| %>
-      <p>Número de relaciones familiares: <%= i.numeroRelacionesFamiliares || "No hay información" %> </p>
-      <p>Número de relaciones personales: <%= i.numeroRelacionesPersonales || "No hay información"  %> </p>
-      <p>Laborales, nombre distinto empleo: <%= i.laborales_nombreDistintoEmpleo || "No hay información" %> </p>
-      <p>Negocios, sociedad mercantil: <%= i.negocios_sociedad_mercantil || "No hay información" %> </p>
-      <p>Negocios, actividad comercial: <%= i.negocios_actividad_comercial || "No hay información"  %> </p>
-      <p>Profesionales, Cámara confederaciones: <%= i.profesionales_nombreCamaraConfederaciones || "No hay información" %> </p>
-      <p>Profesionales, Colegios y asociaciones: <%= i.profesionales_nombreColegiosAsociaciones || "No hay información" %> </p>
-      <p>Profesionales, Prestación de servicios: <%= i.profesionales_nombrePrestacionServicios || "No hay información" %> </p>
-      <p>Profesionales, Sociedades filantrópicas: <%= i.profesionales_nombreFilantropicas || "No hay información" %> </p>
-      <% end %>
+          <% fiscalthis.each do |f| %>
+              <p>Ingresos: <%= f.ingresos || "No hay información" %> </p>
+              <p>Impuestos: <%= f.impuesto || "No hay información" %> </p>
+              <p>Sueldo: <%= f.totalSueldo  || "No hay información" %> </p>
+              <p>Impuesto retenido: <%= f.impuestoRetenido  || "No hay información" %> </p>
+              <p>Fecha de transmisión: <%= f.fechaTransmision  || "No hay información"  %> </p>
+              <p>Año: <%= f.year  || "No hay información"  %> </p>
+          <% end %>
 
-      <% if @patrimonial.empty? %>
-      <p>No hay declaraciones patrimoniales</p>
-      <% end %>
 
-      <% @patrimonial.each do |m| %>
-      <p>Nivel máximo de estudios: <%= m.nivelMaximoEstudios  || "No hay información"  %> </p>
-      <p>Experiencia en sector privado: <%= m.experienciaPrivado  || "No hay información"  %> </p>
-      <p>Experiencia sector público: <%= m.experienciaPublico  || "No hay información"  %> </p>
-      <p>Ingreso total anual: <%= m.ingresoTotalAnual  || "No hay información"  %> </p>
-      <p>Otros ingresos: <%= m.otrosIngresos  || "No hay información"  %> </p>
-      <p>Tipo de bien: <%= m.tipoBien  || "No hay información" %> </p>
-      <p>Forma de adquisicion: <%= m.formaAdquisicion  || "No hay información" %> </p>
-      <p>Fecha de adquisición: <%= m.fechaAdquisicion  || "No hay información" %> </p>
-      <p>Valor: <%= m.valor  || "No hay información" %> </p>
-      <p>Tipo de declaración: <%= m.tipoDeclaracion  || "No hay información" %> </p>
-      <p>Tipo de gravamen: <%= m.tipoGravamen  || "No hay información" %> </p>
-      <p>Institucion cuenta: <%= m.institucionCuenta  || "No hay información"  %> </p>
-      <p>Fecha del gravamen: <%= m.fechaGravamen  || "No hay información"  %> </p>
-      <p>Cantidad representada de gravámenes: <%= m.cantidadRepresentadaGravamenes  || "No hay información" %> </p>
-      <p>Tipo de inversión: <%= m.tipoInversion  || "No hay información"  %> </p>
-      <p>Cantidad representada: <%= m.cantidadRepresentada  || "No hay información"  %> </p>
-      <p>Tipo bien vehículo: <%= m.tipoBienVehiculo  || "No hay información"  %> </p>
+          <% if interestthis.empty? %>
+          <p>No hay declaraciones de interés</p>
+          <% end %>
+
+          <% interestthis.each do |i| %>
+          <p>Número de relaciones familiares: <%= i.numeroRelacionesFamiliares || "No hay información" %> </p>
+          <p>Número de relaciones personales: <%= i.numeroRelacionesPersonales || "No hay información"  %> </p>
+          <p>Laborales, nombre distinto empleo: <%= i.laborales_nombreDistintoEmpleo || "No hay información" %> </p>
+          <p>Negocios, sociedad mercantil: <%= i.negocios_sociedad_mercantil || "No hay información" %> </p>
+          <p>Negocios, actividad comercial: <%= i.negocios_actividad_comercial || "No hay información"  %> </p>
+          <p>Profesionales, Cámara confederaciones: <%= i.profesionales_nombreCamaraConfederaciones || "No hay información" %> </p>
+          <p>Profesionales, Colegios y asociaciones: <%= i.profesionales_nombreColegiosAsociaciones || "No hay información" %> </p>
+          <p>Profesionales, Prestación de servicios: <%= i.profesionales_nombrePrestacionServicios || "No hay información" %> </p>
+          <p>Profesionales, Sociedades filantrópicas: <%= i.profesionales_nombreFilantropicas || "No hay información" %> </p>
+          <%= i.year || "no hay año" %>
+          <% end %>
+
+
+          <!-- <% if patrimonialthis.empty? %>
+          <p>No hay declaraciones patrimoniales</p>
+          <% end %>
+
+          <% patrimonialthis.each do |m| %>
+          <p>Nivel máximo de estudios: <%= m.nivelMaximoEstudios  || "No hay información"  %> </p>
+          <p>Experiencia en sector privado: <%= m.experienciaPrivado  || "No hay información"  %> </p>
+          <p>Experiencia sector público: <%= m.experienciaPublico  || "No hay información"  %> </p>
+          <p>Ingreso total anual: <%= m.ingresoTotalAnual  || "No hay información"  %> </p>
+          <p>Otros ingresos: <%= m.otrosIngresos  || "No hay información"  %> </p>
+          <p>Tipo de bien: <%= m.tipoBien  || "No hay información" %> </p>
+          <p>Forma de adquisicion: <%= m.formaAdquisicion  || "No hay información" %> </p>
+          <p>Fecha de adquisición: <%= m.fechaAdquisicion  || "No hay información" %> </p>
+          <p>Valor: <%= m.valor  || "No hay información" %> </p>
+          <p>Tipo de declaración: <%= m.tipoDeclaracion  || "No hay información" %> </p>
+          <p>Tipo de gravamen: <%= m.tipoGravamen  || "No hay información" %> </p>
+          <p>Institucion cuenta: <%= m.institucionCuenta  || "No hay información"  %> </p>
+          <p>Fecha del gravamen: <%= m.fechaGravamen  || "No hay información"  %> </p>
+          <p>Cantidad representada de gravámenes: <%= m.cantidadRepresentadaGravamenes  || "No hay información" %> </p>
+          <p>Tipo de inversión: <%= m.tipoInversion  || "No hay información"  %> </p>
+          <p>Cantidad representada: <%= m.cantidadRepresentada  || "No hay información"  %> </p>
+          <p>Tipo bien vehículo: <%= m.tipoBienVehiculo  || "No hay información"  %> </p>
+          <% end %> -->
       <% end %>
     </div>

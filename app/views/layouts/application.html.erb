@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Datos3de3</title>
+    <title>#3de3 [datos] | Bienvenido </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Bienvenido a #3de3 [Datos]. Aquí podrás conocer la información pública disponible ─haciendo uso de bases de datos y tecnología─ y acceder a las declaraciones patrimoniales, de intereses y fiscales de los funcionarios públicos de nuestro pais.">
 
-  <body>
+    </head>
+    <body>
+
+      <div class="all">
+        <nav class="nav">
+          <a href="#" class="logo"><%= image_tag "Logo.svg" %></a>
+
+          <%= form_for Search.new, html: {class: "form"} do |s| %>
+
+          <%= s.text_field :nombre %>
+          <%= s.submit "Search", class: "button-gray" %><% end %>
+
+          <a class="nav-link" href="#">filtros</a>
+          <a class="nav-link" href="#">contacto</a>
+          <a class="nav-link" href="#">publica tus datos</a>
+        </nav>
+
+        <main>
+          <br>
+          <p>
+            Estás en <span style="font-weight: bold">#3de3 [datos]<span>, la nueva sección de #3de3.
+          </p>
+          <p>
+            Aquí podrás conocer la información pública disponible ─haciendo uso de bases de datos y tecnología─ y acceder a las declaraciones patrimoniales, de intereses y fiscales de los funcionarios públicos de nuestro pais.
+          </p>
+          <hr>
+
     <%= yield %>
+  </main>
+  </div>
+    <footer class="footer">
+      <%= image_tag("logos-white.png", :class => "logos-footer")%>
+    </footer>
   </body>
 </html>

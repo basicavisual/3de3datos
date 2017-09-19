@@ -13,7 +13,7 @@
     <%= s.select :puesto_simplificado, options_for_select(@puesto_simplificado), :include_blank => true %>
   </div>
 
-  <div class="actions"><%= s.submit "Search", class: "pure-button pure-button-primary" %></div>
+  <div class="actions"><%= s.submit "Search", class: "button-gray" %></div>
   <% end %>
 
-  <p><%= link_to 'Back', fiscals_path %></p>
+  <p><%= link_to 'Back', root_path %></p>

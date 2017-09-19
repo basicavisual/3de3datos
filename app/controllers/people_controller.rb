@@ -7,5 +7,4 @@ class PeopleController < ApplicationController
     @patrimonial = Patrimonial.where(servidor: params[:servidor])
   end
 
-
 end

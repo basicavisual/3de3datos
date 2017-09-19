@@ -12,12 +12,8 @@ end
 
 def search_people
   people = Person.all
-
   people = people.search_by_full_name(nombre) if nombre.present?
-  #people = people.where(["search_by_full_name LIKE ?", nombre]) if nombre.present?
-  # people = people.where(["nombre LIKE ?", "%#{nombre.upcase.to_s}%"]) if nombre.present?
   people = people.where(["puesto_simplificado LIKE ?", puesto_simplificado]) if puesto_simplificado.present?
-
   return people
 end
 

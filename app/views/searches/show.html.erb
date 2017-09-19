@@ -1,6 +1,8 @@
-<h1>Search results</h1>
 
-<p><%= link_to 'Back', new_search_path %></p>
+
+<h1>Resultados</h1>
+
+<hr>
 
 <% if @search.search_people.empty? %>
 
@@ -9,15 +11,16 @@
 <% else %>
     <% @search.search_people.each do |c| %>
     <br>
-    <div class="div">
-      <%= link_to 'Ver declaraciones', person_path(c.servidor) %>
-      <h1><%= c.nombre %> <%= c.a_paterno %> <%= c.a_materno %></h1>
+    <div class="separator">
 
-      <p>Puesto simplificado <%= c.puesto_simplificado %></p>
-      <p>Puesto completo <%= c.puesto_encargo %></p>
-      <p>Género <%= c.genero %></p>
-      <p>id serv <%= c.servidor %></p>
-      <p>id <%= c.id %></p>
+      <h2><%= c.nombre %> <%= c.a_paterno %> <%= c.a_materno %></h2>
+      <p>Puesto: <%= c.puesto_encargo %></p>
+      <p>Entidad: Ciudad de México</p>
+
+        <%= link_to 'Ver declaraciones', person_path(c.servidor), :class=>"button-gray" %>
+
+
     </div>
+    <hr>
     <% end %>
 <% end %>

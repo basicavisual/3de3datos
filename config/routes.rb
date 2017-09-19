@@ -29,6 +29,10 @@ Rails.application.routes.draw do
 
   resources :people, param: :servidor
 
+  resources :welcome do
+    :searches
+  end
+
    root to: "welcome#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
