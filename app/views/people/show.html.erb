@@ -2,46 +2,309 @@
 
 <hr>
     <br>
-    <div class="div">
-      <table>
-        <tr>
-          <td><p class="thinner">Nombre:</p></td>
-          <td><p class="bolder"> <%= @person.nombre %> <%= @person.a_paterno %> <%= @person.a_materno %></p></td>
-        </tr>
-        <tr>
-          <td><p class="thinner">Puesto:</p></td>
-          <td><p class="bolder"><%= @person.puesto_encargo.capitalize %></p></td>
-        </tr>
-        <tr>
-          <td><p>Entidad:</p></td>
-          <td><p>Ciudad de México</p></td>
-        </tr>
-        <tr>
-          <td><p>Nivel máximo de estudios:</p></td>
-          <td><p><%= @patrimonial.pluck(:nivelMaximoEstudios).last.capitalize  || "No hay información"  %></p></td>
-        </tr>
-        <tr>
-          <td><p>Experiencia laboral en años:</p></td>
-          <td><p>Sector Privado: <%= @patrimonial.pluck(:experienciaPrivado).last || "No hay información" %> Sector Público: <%= @patrimonial.pluck(:experienciaPublico).last || "No hay información" %></p></td>
-        </tr>
-      </table>
+    <div class="box">
+      <div class="row">
+        <div class="col-4">
+          <p class="thinner">Nombre:</p>
+        </div>
+        <div class="col-8">
+          <h1 class="bolder"> <%= @person.nombre %> <%= @person.a_paterno %> <%= @person.a_materno %></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p class="thinner">Puesto:</p>
+        </div>
+        <div class="col-8">
+          <p class="bolder"><p class="bolder"><%= @person.puesto_encargo.capitalize %></p></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p>Entidad:</p>
+        </div>
+        <div class="col-8">
+          <p>Ciudad de México</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p>Nivel máximo de estudios:</p>
+        </div>
+        <div class="col-8">
+          <p><%= @patrimonial.pluck(:nivelMaximoEstudios).last.capitalize  || "No hay información"  %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p>Experiencia laboral en años:</p>
+        </div>
+        <div class="col-8">
+          <p>Sector Privado: <%= @patrimonial.pluck(:experienciaPrivado).last || "No hay información" %> Sector Público: <%= @patrimonial.pluck(:experienciaPublico).last || "No hay información" %></p>
+        </div>
+      </div>
     </div>
-
+    <% (2016..Date.today.year).each do |b| %>
+    <div class="tab">
+      <button class="tablinks" onClick="openYear(event, '<%= b %>')" id="first"><%= b %></button>
+    </div>
+    <% end %>
       <% (2016..Date.today.year).each do |z| %>
-          <% fiscalthis = @fiscal.where(year: z) %>
-          <% interestthis = @interest.where(year: z) %>
-          <!-- <% patrimonialthis = @patrimonial.where(year: z) %> -->
+      <% fiscalthis = @fiscal.where(year: z) %>
+      <% interestthis = @interest.where(year: z) %>
+      <% patrimonialthis = @patrimonial.where(year: z) %>
+
+
+      <div id="<%= z %>" class="tabcontent">
+        <div class="tab">
+          <button class="tablinksminus" onClick="openDeclaration(event, 'Patrimonial<%= z %>')" id="second">patrimonial</button>
+          <button class="tablinksminus" onClick="openDeclaration(event, 'Interest<%= z %>')">intereses</button>
+          <button class="tablinksminus" onClick="openDeclaration(event, 'Fiscal<%= z %>')">fiscal</button>
+        </div>
+            <div id="Patrimonial<%= z %>" class="tabcontentminus">
+              <% if patrimonialthis.empty? %>
+              <p>No hay declaraciones patrimoniales para el año <%= z %></p>
+              <% end %>
+              <% patrimonialthis.each do |m| %>
+              <h3 class="table-title">Ingreso total neto del año</h3>
+              <div class="row margin-bot">
+                <div class="col-5">
+                  <p>Ingreso neto del declarante por el empleo, cargo o comisión:</p>
+                </div>
+                <div class="col-7">
+                  <p class="emph"> $MXN <%= number_with_precision(m.ingresoTotalAnual, :precision => 2, :delimiter => ',')  || "No hay información"  %> </p>
+                </div>
+              </div>
+
+              <div class="row margin-bot">
+                <div class="col-5">
+                  <p>Otros ingresos del declarante:</p>
+                </div>
+                <div class="col-7">
+                  <p class="emph">$MXN <%= number_with_precision(m.otrosIngresos, :precision => 2, :delimiter => ',')  || "No hay información"  %> </p>
+                </div>
+              </div>
+              <div class="box">
+                <h3 class="table-title">Inventario de bienes muebles e inmuebles del declarante</h3>
+              </div>
+              <div class="box">
+                <table>
+                  <thead class="table-pretty-header">
+                    <th>Tipo</th>
+                    <th>Forma de adquisición</th>
+                    <th>Fecha de adquisición</th>
+                    <th>Valor</th>
+                  </thead>
+                  <tbody class="table-pretty-body">
+                    <tr>
+                      <td><%= m.tipoBien  || "No hay información" %></td>
+                      <td><%= m.formaAdquisicion  || "No hay información" %></td>
+                      <td><%= m.fechaAdquisicion  || "No hay información" %></td>
+                      <td><%= m.valor  || "No hay información" %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="box">
+                <h3 class="table-title">Inversiones o valores del declarante</h3>
+                <p>(Saldos al 31 de diciembre del <%= z-1 %>)</p>
+              </div>
+
+              <div class="box">
+                <table>
+                  <thead class="table-pretty-header">
+                    <th>Tipo</th>
+                    <th>Cantidad Representada</th>
+                    <th>Tipo bien vehículo</th>
+                  </thead>
+                  <tbody class="table-pretty-body">
+                    <tr>
+                      <td><%= m.tipoInversion  || "No hay información" %></td>
+                      <td><%= m.cantidadRepresentada  || "No hay información" %></td>
+                      <td><%= m.tipoBienVehiculo  || "No hay información" %></td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+
+                <div class="box">
+                  <h3 class="table-title">Gravámenes del declarante</h3>
+                  <p>(Saldos al 31 de diciembre del <%= z-1 %>)</p>
+                </div>
+                <div class="box">
+                  <table>
+                    <thead class="table-pretty-header">
+                      <th>Tipo</th>
+                      <th>Institución Cuenta</th>
+                      <th>Fecha de gravamen</th>
+                      <th>Cantidad representada</th>
+                    </thead>
+                    <tbody class="table-pretty-body">
+                      <tr>
+                        <td><%= m.tipoGravamen  || "No hay información" %></td>
+                        <td><%= m.institucionCuenta  || "No hay información" %></td>
+                        <td><%= m.fechaGravamen  || "No hay información" %></td>
+                        <td><%= m.cantidadRepresentadaGravamenes  || "No hay información" %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                <% end %>
+              </div>
+              <div id="Interest<%= z %>" class="tabcontentminus">
+                <% if interestthis.empty? %>
+                <h2>No hay declaraciones de interés para el año <%= z %></h2>
+                <% end %>
+
+                <% interestthis.each do |i| %>
+                <div class="box">
+                  <h3 class="table-title">Relaciones de interés</h3>
+                </div>
+                <div class="box">
+                  <div class="row">
+                    <div class="col-3">
+                      <p>Relaciones familiares:</p>
+                    </div>
+                    <div class="col-3">
+                      <p class="emph"><%= i.numeroRelacionesFamiliares || "No hay información" %></p>
+                    </div>
+                    <div class="col-3">
+                      <p>Relaciones personales:</p>
+                    </div>
+                    <div class="col-3">
+                      <p class="emph"><%= i.numeroRelacionesPersonales || "No hay información" %></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-3">
+                      <p>Empleo distinto:</p>
+                    </div>
+                    <div class="col-3">
+                      <p class="emph"><%= i.laborales_nombreDistintoEmpleo || "No hay información" %></p>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="box">
+                  <h3 class="table-title">Negocios</h3>
+                </div>
+                <div class="box">
+                  <div class="row">
+                    <div class="col-3">
+                      <p>Sociedad Mercantil:</p>
+                    </div>
+                    <div class="col-6">
+                      <p class="emph"><%= i.negocios_sociedad_mercantil || "No hay información" %></p>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-3">
+                      <p>Actividad Comercial:</p>
+                    </div>
+                    <div class="col-6">
+                      <p class="emph"><%= i.negocios_actividad_comercial || "No hay información" %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="box">
+                  <h3 class="table-title">Relaciones profesionales</h3>
+                </div>
+                <div class="box">
+                  <div class="row">
+                    <div class="col-3">
+                      <p>Cámaras de Confederaciones:</p>
+                    </div>
+                    <div class="col-6">
+                      <p class="emph"><%= i.profesionales_nombreCamaraConfederaciones || "No hay información" %></p>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-3">
+                      <p>Colegios o asociaciones:</p>
+                    </div>
+                    <div class="col-6">
+                      <p class="emph"><%= i.profesionales_nombreColegiosAsociaciones || "No hay información" %></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-3">
+                      <p>Prestación de servicios:</p>
+                    </div>
+                    <div class="col-6">
+                      <p class="emph"><%= i.profesionales_nombrePrestacionServicios || "No hay información" %></p>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-3">
+                      <p>Asociaciones filantrópicas:</p>
+                    </div>
+                    <div class="col-6">
+                      <p class="emph"><%= i.profesionales_nombreFilantropicas || "No hay información" %></p>
+                    </div>
+                  </div>
+                </div>
+
+                <% end %>
+              </div>
+              <div id="Fiscal<%= z %>" class="tabcontentminus">
+                <% if fiscalthis.empty? %>
+                  <h3>No hay declaraciones fiscales para en año <%= z %></h3>
+                <% end %>
+                <% fiscalthis.each do |f| %>
+                <div class="box">
+                  <div class="row">
+                    <div class="col-3">
+                      <p>Ingresos:</p>
+                    </div>
+                    <div class="col-9">
+                      <p class="emph"><%= f.ingresos || "No hay información" %></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-3">
+                      <p>Total de sueldo:</p>
+                    </div>
+                    <div class="col-9">
+                      <p class="emph"><%= f.totalSueldo  || "No hay información" %></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-3">
+                      <p>Impuestos:</p>
+                    </div>
+                    <div class="col-9">
+                      <p class="emph"><%= f.impuesto || "No hay información" %></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-3">
+                      <p>Impuestos retenidos:</p>
+                    </div>
+                    <div class="col-9">
+                      <p class="emph"><%= f.impuestoRetenido  || "No hay información" %></p>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+              </div>
+            </div>
+
+
+
+
+<!--
             <% if fiscalthis.empty? %>
             No hay declaraciones fiscales
             <% end %>
 
           <% fiscalthis.each do |f| %>
+              <h4>Declaración fiscal</h4>
               <p>Ingresos: <%= f.ingresos || "No hay información" %> </p>
               <p>Impuestos: <%= f.impuesto || "No hay información" %> </p>
               <p>Sueldo: <%= f.totalSueldo  || "No hay información" %> </p>
               <p>Impuesto retenido: <%= f.impuestoRetenido  || "No hay información" %> </p>
               <p>Fecha de transmisión: <%= f.fechaTransmision  || "No hay información"  %> </p>
-              <p>Año: <%= f.year  || "No hay información"  %> </p>
           <% end %>
 
 
@@ -50,6 +313,7 @@
           <% end %>
 
           <% interestthis.each do |i| %>
+          <h4>Declaración de intereses</h4>
           <p>Número de relaciones familiares: <%= i.numeroRelacionesFamiliares || "No hay información" %> </p>
           <p>Número de relaciones personales: <%= i.numeroRelacionesPersonales || "No hay información"  %> </p>
           <p>Laborales, nombre distinto empleo: <%= i.laborales_nombreDistintoEmpleo || "No hay información" %> </p>
@@ -59,15 +323,15 @@
           <p>Profesionales, Colegios y asociaciones: <%= i.profesionales_nombreColegiosAsociaciones || "No hay información" %> </p>
           <p>Profesionales, Prestación de servicios: <%= i.profesionales_nombrePrestacionServicios || "No hay información" %> </p>
           <p>Profesionales, Sociedades filantrópicas: <%= i.profesionales_nombreFilantropicas || "No hay información" %> </p>
-          <%= i.year || "no hay año" %>
           <% end %>
 
 
-          <!-- <% if patrimonialthis.empty? %>
+          <% if patrimonialthis.empty? %>
           <p>No hay declaraciones patrimoniales</p>
           <% end %>
 
           <% patrimonialthis.each do |m| %>
+          <h4>Declaración patrimonial</h4>
           <p>Nivel máximo de estudios: <%= m.nivelMaximoEstudios  || "No hay información"  %> </p>
           <p>Experiencia en sector privado: <%= m.experienciaPrivado  || "No hay información"  %> </p>
           <p>Experiencia sector público: <%= m.experienciaPublico  || "No hay información"  %> </p>
@@ -87,4 +351,8 @@
           <p>Tipo bien vehículo: <%= m.tipoBienVehiculo  || "No hay información"  %> </p>
           <% end %> -->
       <% end %>
-    </div>
+
+    <script type="text/javascript">
+    document.getElementById("first").click();
+    document.getElementById("second").click();
+    </script>

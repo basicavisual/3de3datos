@@ -1,3 +1,105 @@
 // Place all the styles related to the People controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Style the tab */
+
+div.tab {
+  overflow: hidden;
+  display: inline-block;
+  /*border: 1px solid #ccc;*/
+  /*background-color: #f1f1f1;*/
+  margin-bottom: -4px;
+  button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    &:hover {
+      background-color: #ddd;
+    }
+    &.active {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
+
+/* Style the buttons inside the tab */
+
+/* Change background color of buttons on hover */
+
+/* Create an active/current tablink class */
+
+/* Style the tab content */
+
+.tabcontent {
+  display: none;
+  /*padding: 6px 12px;*/
+  /*border: 1px solid #ccc;*/
+  padding-top: 7px;
+  border-top: none;
+}
+
+/* Style the tab content */
+
+.tabcontentminus {
+  display: none;
+  padding: 20px;
+  border: 1px solid #000;
+  /*border-top: none;*/
+}
+
+.table-title {
+  font-size: 1.2rem;
+}
+
+.margin-bot{
+  margin-bottom: 1rem;
+}
+
+.box {
+  margin-bottom: 1rem;
+}
+
+
+// .table-pretty-header {
+//   margin-bottom: .3rem;
+//   border-bottom: 2px solid #222;
+//   padding-bottom: 5px;
+// }
+
+.servidor-table {
+  width: 50%;
+}
+
+.servidor-table p {
+  margin-top: .2rem;
+  margin-bottom: .2rem;
+}
+
+.table-30 {
+  width: 30%;
+  padding-right: 1rem;
+}
+
+thead {
+  text-align: left;
+  border-bottom: 2px solid #999;
+
+}
+
+th {
+  width: 20%;
+  padding-bottom: .5rem;
+
+}
+
+td {
+  padding: .5rem 0 .5rem 0;
+  font-weight: bold;
+}
